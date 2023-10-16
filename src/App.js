@@ -1,19 +1,19 @@
 import './css/App.css';
 import allBlogs from './json/blogsData.json';
-
+import BlogList from './components/BlogList';
 
 function App() {
 
-  const blogList = allBlogs.map(blog => {
-      return (
-          <div key={blog.id}>
-              <div>Title:{blog.title}</div>
-              <div>Author: {blog.author}</div>
-              <div>Body: {blog.body}</div>
-          </div>
-      )
-  });
-  return blogList;
+  function deleteBlog(id) {
+    allBlogs = allBlogs.filter(item => item.id !== id)
+  }
+
+  return (
+    <div>
+      <BlogList blogs={allBlogs} deleteBlog={deleteBlog}/>
+    </div>
+
+  )
 
 }
 
